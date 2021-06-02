@@ -6,15 +6,15 @@ import DadosEntrega from './DadosEntrega'
 export default function FormularioCadastro({ aoEnviar, validarCPF }) {
   const [etapaAtual, setEtapaAtual] = useState(0)
 
-  function proximo(){
-    setEtapaAtual(etapaAtual+1)
-  }
-
   const formulario = [
     <DadosUsuario aoEnviar={proximo}/>,
     <DadosPessoais aoEnviar={proximo} validarCPF={validarCPF} />,
     <DadosEntrega />,
   ]
+
+  function proximo(){
+    setEtapaAtual(etapaAtual+1)
+  }
 
   return (
     <>
