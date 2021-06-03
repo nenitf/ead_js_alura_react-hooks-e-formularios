@@ -8,18 +8,23 @@ export default function DadosUsuario({ aoEnviar, validacoes }) {
 
   function validarCampos(e){
     const { name, value } = e.target
-    console.log(validacoes)
-
     const novoEstado = {...erros}
     novoEstado[name] = validacoes[name](value)
-
     setErros(novoEstado)
+  }
+
+  function possoEnviar(){
+    return !Object
+      .keys(erros)
+      .some(p => erros[p].valido === false)
   }
 
   return (
     <form onSubmit={(e) => {
       e.preventDefault()
-      aoEnviar({ email, senha })
+      if(possoEnviar()){
+        aoEnviar({ email, senha })
+      }
       }}>
       <TextField
         value={email}
@@ -37,7 +42,7 @@ export default function DadosUsuario({ aoEnviar, validacoes }) {
         value={senha}
         onChange={(e) => setSenha(e.target.value)}
 
-        onBlur={(e) => validarCampos(e)}
+        onBlur={validarCampos}
         error={!erros.senha.valido}
         helperText={erros.senha.texto}
 
@@ -52,7 +57,7 @@ export default function DadosUsuario({ aoEnviar, validacoes }) {
       />
 
       <Button type="submit" variant="contained" color="primary">
-        Cadastrar
+        Próximo
       </Button>
     </form>
   )

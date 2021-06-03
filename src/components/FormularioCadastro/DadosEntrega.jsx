@@ -7,6 +7,7 @@ export default function DadosEntrega({ aoEnviar }) {
   const [numero, setNumero] = useState("")
   const [estado, setEstado] = useState("")
   const [cidade, setCidade] = useState("")
+
   return (
     <form
       onSubmit={(event) => {

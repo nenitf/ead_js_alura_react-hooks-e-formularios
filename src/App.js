@@ -3,7 +3,7 @@ import "./App.css";
 import FormularioCadastro from "./components/FormularioCadastro/FormularioCadastro";
 import 'fontsource-roboto';
 
-import { validarCPF, validarSenha } from './models/cadastro'
+import { validarNome, validarCPF, validarSenha } from './models/cadastro'
 
 import {Container, Typography } from "@material-ui/core"
 class App extends Component {
@@ -20,7 +20,7 @@ class App extends Component {
 
         <FormularioCadastro
           aoEnviar={aoEnviarForm}
-          validacoes={{cpf: validarCPF, senha: validarSenha}}
+          validacoes={{cpf: validarCPF, senha: validarSenha, nome: validarNome}}
         />
       </Container>
     );
