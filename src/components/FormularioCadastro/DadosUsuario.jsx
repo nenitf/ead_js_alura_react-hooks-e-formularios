@@ -1,9 +1,20 @@
 import React, { useState } from 'react'
 import { TextField, Button } from "@material-ui/core";
 
-export default function DadosUsuario({ aoEnviar }) {
+export default function DadosUsuario({ aoEnviar, validacoes }) {
   const [email, setEmail] = useState("")
   const [senha, setSenha] = useState("")
+  const [erros, setErros] = useState({senha:{valido:true, texto:""}})
+
+  function validarCampos(e){
+    const { name, value } = e.target
+    console.log(validacoes)
+
+    const novoEstado = {...erros}
+    novoEstado[name] = validacoes[name](value)
+
+    setErros(novoEstado)
+  }
 
   return (
     <form onSubmit={(e) => {
@@ -25,7 +36,13 @@ export default function DadosUsuario({ aoEnviar }) {
       <TextField
         value={senha}
         onChange={(e) => setSenha(e.target.value)}
+
+        onBlur={(e) => validarCampos(e)}
+        error={!erros.senha.valido}
+        helperText={erros.senha.texto}
+
         id="senha"
+        name="senha"
         label="Senha"
         type="password"
         variant="outlined"

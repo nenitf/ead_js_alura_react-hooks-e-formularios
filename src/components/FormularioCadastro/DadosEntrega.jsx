@@ -4,7 +4,7 @@ import { TextField, Button } from "@material-ui/core";
 export default function DadosEntrega({ aoEnviar }) {
   const [cep, setCep] = useState("")
   const [endereco, setEndereco] = useState("")
-  const [numero, setNumero] = useState(null)
+  const [numero, setNumero] = useState("")
   const [estado, setEstado] = useState("")
   const [cidade, setCidade] = useState("")
   return (
