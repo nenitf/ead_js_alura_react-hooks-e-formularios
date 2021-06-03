@@ -8,7 +8,7 @@ export default function DadosUsuario({ aoEnviar }) {
   return (
     <form onSubmit={(e) => {
       e.preventDefault()
-      aoEnviar()
+      aoEnviar({ email, senha })
       }}>
       <TextField
         value={email}
